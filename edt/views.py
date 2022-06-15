@@ -2,6 +2,8 @@ from django.shortcuts import render
 import requests
 from edt.models import EdtWeek, Edt
 
+# reload json, and rewrite database with new data
+
 
 def load(request):
     Edt.objects.all().delete()
@@ -47,6 +49,8 @@ def load(request):
         edt.save()
     return render(request, 'index.html')
 
+
+# Retrieve data in db to display in html
 
 def loadWeek(request, week):
     if week < 1:
