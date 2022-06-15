@@ -26,6 +26,7 @@ def load(request):
             DebutSeance=i['DebutSeance'],
             FinSeance=i['FinSeance'],
             NomSalle=i['NomSalle'],
+
         )
         j += 1
         if j == 1 or j == 10:

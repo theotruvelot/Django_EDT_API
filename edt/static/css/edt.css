@@ -11,7 +11,7 @@ table.calendar > tbody > tr > td {
 }
 
 table.calendar > tbody > tr > td > div {
-    //padding: 8px;
+    padding: 8px;
     height: 40px;
     overflow: hidden;
     display: inline-block;
