@@ -1,20 +1,5 @@
 
 services:
-    db:
-        platform: linux/arm64
-        image: mysql/mysql-server
-        restart: always
-        environment:
-            MYSQL_ROOT_HOST: '%'
-            MYSQL_ROOT_PASSWORD: "root"
-            MYSQL_DATABASE: edt
-            MYSQL_USER: edt        
-        expose:
-            - 3306
-        volumes:
-            - ./data/db:/var/lib/mysql
-        
-
     web:
         build: .
         entrypoint: /entrypoint.sh
@@ -24,7 +9,6 @@ services:
         restart: on-failure
         ports:
             - 80:80
-        depends_on:
-            - db
+      
    
         
