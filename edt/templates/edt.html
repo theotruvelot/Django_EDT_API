@@ -1,177 +1,164 @@
 {% load static %}
-<link href="{% static  'css/edt.css' %}" rel="stylesheet">
-<h1>Du {{ edtWeek.DebutSeance.date.isoformat }} au {{ edtWeek.FinSeance.date.isoformat }}, semaine : {{ edtWeek.Semaine }}</h1>
+<link href="{% static  'css/edt.css' %}" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+<h1>
+    Du {{ edtWeek.DebutSeance.date.isoformat }} au 
+    {{ edtWeek.FinSeance.date.isoformat }}, semaine : {{ edtWeek.Semaine }}
+    <div>  
+            <button
+            class="btn btn-primary"
+            onclick="window.location.href='{{ lastWeek }}'">
+            last week
+        </button>
+        <button
+            class="btn btn-primary"
+            onclick="window.location.href='{{ nextWeek }}'"
+        >
+            next week
+        </button>
+    </div>
+</h1>
 
 <table class="calendar table table-bordered">
     <thead>
-    <tr>
-        <th>&nbsp;</th>
-        <th width="20%">Sunday</th>
-        <th width="20%">Monday</th>
-        <th width="20%">Tuesday</th>
-        <th width="20%">Wednesday</th>
-        <th width="20%">Thursday</th>
-    </tr>
+        <tr>
+            <th>&nbsp;</th>
+            <th width="20%">Sunday</th>
+            <th width="20%">Monday</th>
+            <th width="20%">Tuesday</th>
+            <th width="20%">Wednesday</th>
+            <th width="20%">Thursday</th>
+        </tr>
 
-    <button class="btn btn-primary" onclick="window.location.href='{{ lastWeek }}'">last week</button>
-    <button class="btn btn-primary" onclick="window.location.href='{{ nextWeek }}'">next week</button>
+
     </thead>
     <tbody>
+        <tr>
+            <td>08:30</td>
 
-    <tr>
-        <td>08:30</td>
+            {% for am in edt %} 
+                {% if am.DebutSeance.time.hour == 8 and am.DebutSeance.time.minute == 30 %}
+                    <td class="has-events" rowspan="8">
+                        <div class="row-fluid lecture" style="width: 99%; height: 100%">
+                            <span class="title"><i class="fa-solid fa-calendar-day"></i> {{ am.NomMatiere }}</span>
+                            <span class="lecturer">
+                                <a>
+                                    <i class="fa-solid fa-chalkboard-user"></i> Prof. {{ am.IntervenantNom }} {{ am.IntervenantPrenom }}
+                                </a>
+                            </span>
+                            <span class="location"><i class="fa-solid fa-people-roof"></i> {{ am.NomSalle }}</span>
+                        </div>
+                    </td>
+                {% endif %} 
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>09:00</td>
+        </tr>
 
-        {% for am in edt %}
-            {% if am.DebutSeance.time.hour == 8 and am.DebutSeance.time.minute == 30 %}
-                <td class=" has-events" rowspan="8">
-            <div class="row-fluid lecture" style="width: 99%; height: 100%;">
+        <tr>
+            <td>09:30</td>
+        </tr>
 
+        <tr>
+            <td>10:00</td>
+        </tr>
 
-                <span class="title"></span> {{ am.NomMatiere }} <span class="lecturer"><a>Prof.
-                            {{ am.IntervenantNom }} {{ am.IntervenantPrenom }}</a></span>
-                <span class="location"> {{ am.NomSalle }}</span>
-            </div>
-        </td>
-            {% endif %}
-        {% endfor %}
+        <tr>
+            <td>10:30</td>
+        </tr>
 
+        <tr>
+            <td>11:00</td>
+        </tr>
 
+        <tr>
+            <td>11:30</td>
+        </tr>
 
-    </tr>
-    <tr>
-        <td>09:00</td>
-    </tr>
+        <tr>
+            <td>12:00</td>
+        </tr>
 
-    <tr>
-        <td>09:30</td>
-    </tr>
+        <tr>
+            <td>12:30</td>
+        </tr>
 
-    <tr>
-        <td>10:00</td>
+        <tr>
+            <td>13:00</td>
+            {% for pm in edt %} 
+                {% if pm.DebutSeance.time.hour == 13 and pm.DebutSeance.time.minute == 00 %}
+                <td class="has-events" rowspan="8">
+                    <div class="row-fluid lecture" style="width: 99%; height: 100%">
+                        <span class="title"><i class="fa-solid fa-calendar-day"></i> {{ pm.NomMatiere }}</span>
+                        <span class="lecturer">
+                            <a>
+                                <i class="fa-solid fa-chalkboard-user"></i> Prof. {{ pm.IntervenantNom }} {{ pm.IntervenantPrenom }}
+                            </a>
+                        </span>
+                        <span class="location"><i class="fa-solid fa-people-roof"></i> {{ pm.NomSalle }}</span>
+                    </div>
+                </td>
+                {% endif %} 
+            {% endfor %}
+        </tr>
 
-    </tr>
+        <tr>
+            <td>13:30</td>
+        </tr>
+        <tr>
+            <td>14:00</td>
 
-    <tr>
-        <td>10:30</td>
+            <td class="no-events" rowspan="1"></td>
 
-    </tr>
+            <td class="no-events" rowspan="1"></td>
 
-    <tr>
-        <td>11:00</td>
-    </tr>
+            <td class="no-events" rowspan="1"></td>
 
-    <tr>
-        <td>11:30</td>
-    </tr>
+            <td class="no-events" rowspan="1"></td>
 
-    <tr>
-        <td>12:00</td>
-    </tr>
+            <td class="no-events" rowspan="6"></td>
+        </tr>
+        <tr>
+            <td>14:30</td>
 
-    <tr>
-        <td>12:30</td>
-    </tr>
+            <td class="no-events" rowspan="1"></td>
 
-    <tr>
-        <td>13:00</td>
-          {% for pm in edt %}
-            {% if pm.DebutSeance.time.hour == 13 and pm.DebutSeance.time.minute == 00 %}
-                <td class=" has-events" rowspan="8">
-            <div class="row-fluid lecture" style="width: 99%; height: 100%;">
+            <td class="no-events" rowspan="1"></td>
 
+            <td class="no-events" rowspan="1"></td>
+        </tr>
+        <tr>
+            <td>15:00</td>
 
-                <span class="title"></span> {{ pm.NomMatiere }} <span class="lecturer"><a>Prof.
-                            {{ pm.IntervenantNom }} {{ pm.IntervenantPrenom }}</a></span>
-                <span class="location"> {{ pm.NomSalle }}</span>
-            </div>
-        </td>
-            {% endif %}
-        {% endfor %}
-    </tr>
+            <td class="no-events" rowspan="1"></td>
 
-    <tr>
-        <td>13:30</td>
+            <td class="no-events" rowspan="1"></td>
 
+            <td class="no-events" rowspan="1"></td>
+        </tr>
+        <tr>
+            <td>15:30</td>
 
-    </tr>
-    <tr>
-        <td>14:00</td>
+            <td class="no-events" rowspan="1"></td>
 
-        <td class=" no-events" rowspan="1"></td>
+            <td class="no-events" rowspan="1"></td>
 
-        <td class=" no-events" rowspan="1"></td>
+            <td class="no-events" rowspan="1"></td>
+        </tr>
+        <tr>
+            <td>16:00</td>
 
-        <td class=" no-events" rowspan="1">
+            <td class="no-events" rowspan="1"></td>
 
+            <td class="no-events" rowspan="4"></td>
 
-        </td>
+            <td class="no-events" rowspan="4"></td>
 
-        <td class=" no-events" rowspan="1"></td>
-
-        <td class=" no-events" rowspan="6">
-
-
-        </td>
-
-    </tr>
-    <tr>
-        <td>14:30</td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-    </tr>
-    <tr>
-        <td>15:00</td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-    </tr>
-    <tr>
-        <td>15:30</td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-        <td class=" no-events" rowspan="1"></td>
-
-    </tr>
-    <tr>
-        <td>16:00</td>
-
-        <td class=" no-events" rowspan="1">
-
-
-        </td>
-
-        <td class=" no-events" rowspan="4">
-
-
-        </td>
-
-        <td class=" no-events" rowspan="4">
-
-
-        </td>
-
-        <td class=" no-events" rowspan="4">
-
-
-        </td>
-
-    </tr>
-    <tr>
-        <td>16:30</td>
-
-    </tr>
-
+            <td class="no-events" rowspan="4"></td>
+        </tr>
+        <tr>
+            <td>16:30</td>
+        </tr>
     </tbody>
 </table>

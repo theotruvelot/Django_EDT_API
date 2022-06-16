@@ -1,68 +1,57 @@
-table.calendar {
-    margin-bottom: 0;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body{
+    height: 100vh;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";    ;    
+    background: url("https://images.unsplash.com/photo-1544306094-e2dcf9479da3");
+    color: rgb(241, 241, 241);
+    background-size: 100%;
 }
 
-table.calendar > thead > tr > th {
-    text-align: center;
+.has-events {
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);	
+
+	background-color: rgba(255, 255, 255, .15);
+	
+	backdrop-filter: blur(5px);
+
+    border-radius: 13px;
+    padding: 20px;
 }
 
-table.calendar > tbody > tr > td {
-    height: 20px;
+.has-events > .lecture{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.has-events > .lecture > span{
+    padding: 10px 0;
 }
 
-table.calendar > tbody > tr > td > div {
-    padding: 8px;
-    height: 40px;
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: middle;
-    float: left;
+button{
+    border: none;
+    background-color: rgb(240, 240, 240);
+    color: rgb(17, 17, 17);
+    padding: 7px;
+    border-radius: 7px;
+    font-size: 1.2rem;
+    cursor: pointer;    
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
 }
 
-table.calendar > tbody > tr > td.has-events {
-    color: white;
-    cursor: pointer;
-    padding: 0;
-    border-radius: 4px;
+button:hover{
+    background-color: rgb(224, 224, 224);
 }
 
-table.calendar > tbody > tr > td.has-events > div {
-    background-color: #08C;
-    border-left: 1px solid white;
+table {
+    width: 100%;
 }
 
-table.calendar > tbody > tr > td.has-events > div:first-child {
-    border-left: 0;
-    margin-left: 1px;
-}
-
-table.calendar > tbody > tr > td.has-events > div.practice {
-    opacity: 0.7;
-}
-table.calendar > tbody > tr > td.conflicts > div > span.title {
-    //color: red;
-}
-table.calendar > tbody > tr > td.max-conflicts > div {
-    background-color: red;
-    color: white;
-}
-
-table.calendar > tbody > tr > td.has-events > div > span {
-    display: block;
-    text-align: center;
-}
-table.calendar > tbody > tr > td.has-events > div > span a {
-    color: white;
-}
-
-table.calendar > tbody > tr > td.has-events > div > span.title {
-    font-weight: bold;
-}
-
-table.table-borderless > thead > tr > th, table.table-borderless > tbody > tr > td {
-    border: 0;
-}
-
-.table tbody tr.hover td, .table tbody tr.hover th {
-    background-color: whiteSmoke;
+h1{
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
