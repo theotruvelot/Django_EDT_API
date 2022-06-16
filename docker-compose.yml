@@ -1,7 +1,7 @@
 
 services:
     db:
-        # platform: linux/arm64
+        platform: linux/arm64
         image: mysql/mysql-server
         restart: always
         environment:
@@ -20,11 +20,11 @@ services:
 
     web:
         build: .
+        entrypoint: /entrypoint.sh
         command: python manage.py runserver 0.0.0.0:80 
         volumes:
             - .:/code
-        restart: always
-        entrypoint: /entrypoint.sh
+        restart: on-failure
         ports:
             - 80:80
         depends_on:
