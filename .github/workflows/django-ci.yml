@@ -19,7 +19,7 @@ jobs:
       db:
        image: mysql/mysql-server
         restart: always
-        environment:
+        env:
             MYSQL_ROOT_HOST: '%'
             MYSQL_ROOT_PASSWORD: "root"
             MYSQL_DATABASE: edt
