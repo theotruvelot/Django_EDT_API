@@ -29,21 +29,4 @@ services:
         depends_on:
             db:
                 condition: service_healthy
-    nginx:
-        image: nginx
-        volumes:
-            - ./data/nginx:/etc/nginx/conf.d
-        ports:
-            - 80:8000
-        depends_on:
-            web:
-logging:
-    driver: "json-file"
-    options:
-        max-size: "10m"
-        max-file: "3"
-        path: "./logs/docker.log"
-    handlers:
-        - type: "stream"
-          formatter: "json"
-    stream: ["stderr", "stdout"]
+ 
