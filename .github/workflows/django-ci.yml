@@ -17,20 +17,11 @@ jobs:
 
     services:
       mysql:
-       image: mysql/mysql-server
-       env:
-            MYSQL_ROOT_HOST: '%'
-            MYSQL_ROOT_PASSWORD: "root"
-            MYSQL_DATABASE: edt
-            MYSQL_USER: edt        
-        expose:
-            - 3306
-        volumes:
-            - ./data/db:/var/lib/mysql
-        healthcheck:
-            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-            timeout: 20s
-            retries: 10
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: mysql
+        ports: ['3306:3306']
 
     steps:
     - uses: actions/checkout@v2
