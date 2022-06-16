@@ -17,8 +17,8 @@ services:
             test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
             timeout: 20s
             retries: 10
-            interval: 5s
-            
+            interval: 30s
+
     web:
         build: .
         command: python manage.py runserver 0.0.0.0:8000
