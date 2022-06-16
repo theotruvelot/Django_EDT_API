@@ -30,3 +30,13 @@ services:
             db:
                 condition: service_healthy
 
+logging:
+    driver: "json-file"
+    options:
+        max-size: "10m"
+        max-file: "3"
+        path: "./logs/docker.log"
+    handlers:
+        - type: "stream"
+          formatter: "json"
+    stream: ["stderr", "stdout"]
