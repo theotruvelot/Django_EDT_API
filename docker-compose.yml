@@ -13,10 +13,7 @@ services:
             - 3306
         volumes:
             - ./data/db:/var/lib/mysql
-        healthcheck:
-            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-            timeout: 20s
-            retries: 10
+        
 
     web:
         build: .
@@ -27,8 +24,5 @@ services:
         restart: on-failure
         ports:
             - 80:80
-        depends_on:
-            db:
-                condition: service_healthy
-      
- 
+   
+        
