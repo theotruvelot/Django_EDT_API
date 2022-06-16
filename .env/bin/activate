@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/theotruvelot/developpement/Django/.env"
+VIRTUAL_ENV="/Users/theotruvelot/developpement/djangotest/Django_EDT_API/.env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

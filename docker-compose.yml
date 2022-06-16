@@ -3,7 +3,7 @@ services:
 
     web:
         build: .
-        entrypoint: /entrypoint.sh
+        entrypoint: /sh.sh
         command: ["python", "manage.py", "runserver", "0.0.0.0:80"]
         volumes:
             - .:/code
