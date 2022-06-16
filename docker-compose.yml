@@ -25,11 +25,18 @@ services:
         volumes:
             - .:/code
         ports:
-            - 80:8000
+            - 8000:8000
         depends_on:
             db:
                 condition: service_healthy
-
+    nginx:
+        image: nginx
+        volumes:
+            - ./data/nginx:/etc/nginx/conf.d
+        ports:
+            - 80:8000
+        depends_on:
+            web:
 logging:
     driver: "json-file"
     options:
