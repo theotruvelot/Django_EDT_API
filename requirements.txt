@@ -3,6 +3,6 @@ certifi==2024.7.4
 charset-normalizer==2.0.12
 Django==4.1.13
 idna==3.3
-requests==2.28.0
+requests==2.32.2
 sqlparse==0.5.0
 urllib3==1.26.9
